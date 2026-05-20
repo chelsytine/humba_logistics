@@ -17,7 +17,8 @@
 .fleet-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.75rem;
+  align-items: stretch;
 }
 
 .growth-grid {

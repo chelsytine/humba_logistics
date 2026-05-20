@@ -14,7 +14,7 @@
     </div>
 
     <div class="fleet-grid" appAppear>
-      @for (truck of trucks; track truck.id) {
+      @for (truck of trucks(); track truck.id) {
         <app-truck-card [truck]="truck"></app-truck-card>
       }
     </div>

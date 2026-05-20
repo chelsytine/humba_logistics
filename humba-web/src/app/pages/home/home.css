@@ -3,30 +3,16 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-primary-lighter) 100%);
+  background: url('/home.png') center/cover no-repeat, linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-primary-lighter) 100%);
   overflow: hidden;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(244, 121, 32, 0.12) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(244, 121, 32, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2,19,35,0.82) 0%, rgba(2,19,35,0.65) 100%);
+  z-index: 0;
 }
 
 .hero-content {
@@ -129,28 +115,47 @@
 
 .service-card {
   background: var(--color-white);
-  padding: 2.5rem 2rem;
-  border-radius: 12px;
+  padding: 2.2rem 2rem;
+  border-radius: 14px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 1px 3px rgba(2,19,35,0.06), 0 1px 2px rgba(2,19,35,0.04);
+  position: relative;
+  border-left: 3px solid var(--color-primary);
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(2,19,35,0.1);
+  border-left-color: var(--color-accent);
 }
 
 .service-icon {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 1.5rem;
-  background: rgba(2, 19, 35, 0.06);
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  border: 2px solid var(--color-primary);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-accent);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  border-color: var(--color-accent);
+  background: rgba(244, 121, 32, 0.06);
+}
+
+.service-card h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--color-gray-500);
 }
 
 .service-card h3 {

@@ -6,7 +6,7 @@ export const routes: Routes = [
   { path: 'services', loadComponent: () => import('./pages/services/services').then(m => m.Services), title: 'Services - Humba Logistics' },
   { path: 'fleet', loadComponent: () => import('./pages/fleet/fleet').then(m => m.Fleet), title: 'Our Fleet - Humba Logistics' },
   { path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.Contact), title: 'Contact - Humba Logistics' },
-  { path: 'investors', loadComponent: () => import('./pages/investor/investor').then(m => m.Investor), title: 'Investors - Humba Logistics' },
-  { path: 'messages', loadComponent: () => import('./pages/messages/messages').then(m => m.Messages), title: 'Messages - Humba Logistics' },
+  { path: 'messages', redirectTo: 'admin' },
+  { path: 'admin', loadComponent: () => import('./pages/admin/admin').then(m => m.Admin), title: 'Admin - Humba Logistics' },
   { path: '**', redirectTo: '' }
 ];

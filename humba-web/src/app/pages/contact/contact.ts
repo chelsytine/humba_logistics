@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from '../../services/firebase.service';
 
 export interface ContactMessage {
   id: string;
@@ -21,6 +22,7 @@ const STORAGE_KEY = 'humba_messages';
   styleUrl: './contact.css'
 })
 export class Contact {
+  private firebaseService = inject(FirebaseService);
   contactForm: FormGroup;
   submitted = false;
   submitSuccess = false;
@@ -73,6 +75,7 @@ export class Contact {
     const existing = Contact.getMessages();
     existing.unshift(newMsg);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    this.firebaseService.sendMessage(newMsg);
   }
 
   static getMessages(): ContactMessage[] {
