@@ -1,0 +1,30 @@
+<header class="header" [class.scrolled]="false">
+  <div class="container">
+    <nav class="nav">
+      <a routerLink="/" class="logo" (click)="closeMenu()">
+        <img src="logo.jpeg" alt="Humba Logistics" class="logo-img" />
+        <span class="logo-text">
+          <span class="logo-title">HUMBA</span>
+          <span class="logo-subtitle">LOGISTICS</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'">
+        <span [class.open]="menuOpen"></span>
+        <span [class.open]="menuOpen"></span>
+        <span [class.open]="menuOpen"></span>
+      </button>
+
+      <div class="nav-backdrop" [class.show]="menuOpen" (click)="closeMenu()"></div>
+
+      <ul class="nav-links" [class.active]="menuOpen">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+        <li><a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a></li>
+        <li><a routerLink="/fleet" routerLinkActive="active" (click)="closeMenu()">Our Fleet</a></li>
+        <li><a routerLink="/investors" routerLinkActive="active" (click)="closeMenu()">Investors</a></li>
+        <li><a routerLink="/contact" class="btn btn-primary nav-cta" routerLinkActive="active" (click)="closeMenu()">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

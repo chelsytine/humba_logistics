@@ -1,0 +1,12 @@
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  { path: '', loadComponent: () => import('./pages/home/home').then(m => m.Home), title: 'Humba Logistics' },
+  { path: 'about', loadComponent: () => import('./pages/about/about').then(m => m.About), title: 'About - Humba Logistics' },
+  { path: 'services', loadComponent: () => import('./pages/services/services').then(m => m.Services), title: 'Services - Humba Logistics' },
+  { path: 'fleet', loadComponent: () => import('./pages/fleet/fleet').then(m => m.Fleet), title: 'Our Fleet - Humba Logistics' },
+  { path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.Contact), title: 'Contact - Humba Logistics' },
+  { path: 'investors', loadComponent: () => import('./pages/investor/investor').then(m => m.Investor), title: 'Investors - Humba Logistics' },
+  { path: 'messages', loadComponent: () => import('./pages/messages/messages').then(m => m.Messages), title: 'Messages - Humba Logistics' },
+  { path: '**', redirectTo: '' }
+];

@@ -1,0 +1,31 @@
+<div class="truck-card">
+  <div class="truck-visual">
+    <img [src]="'trucks/' + truck.image" [alt]="truck.name" class="truck-img" />
+  </div>
+  <div class="truck-info">
+    <div class="truck-header">
+      <h3>{{ truck.name }}</h3>
+      <span class="truck-type">{{ truck.type }}</span>
+    </div>
+    <div class="truck-specs">
+      <div class="spec">
+        <span class="spec-label">Capacity</span>
+        <span class="spec-value">{{ truck.capacity }}</span>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Dimensions</span>
+        <span class="spec-value">{{ truck.dimensions }}</span>
+      </div>
+      <div class="spec">
+        <span class="spec-label">Max Load</span>
+        <span class="spec-value">{{ truck.maxLoad }}</span>
+      </div>
+    </div>
+    <p class="truck-desc">{{ truck.description }}</p>
+    <ul class="truck-features">
+      @for (feature of truck.features; track feature) {
+        <li>{{ feature }}</li>
+      }
+    </ul>
+  </div>
+</div>
