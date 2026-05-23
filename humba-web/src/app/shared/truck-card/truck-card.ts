@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 export interface Truck {
   id: string;
@@ -10,6 +11,7 @@ export interface Truck {
   description: string;
   features: string[];
   image: string;
+  category?: string;
 }
 
 @Component({
@@ -20,4 +22,9 @@ export interface Truck {
 })
 export class TruckCard {
   @Input({ required: true }) truck!: Truck;
+
+  get whatsappUrl(): string {
+    const msg = encodeURIComponent(`Hi! I'm interested in the ${this.truck.name} (${this.truck.type}). Can you share more details?`);
+    return `https://wa.me/${environment.whatsappNumber}?text=${msg}`;
+  }
 }

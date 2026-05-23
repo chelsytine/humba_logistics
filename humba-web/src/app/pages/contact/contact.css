@@ -57,6 +57,16 @@
   flex-shrink: 0;
 }
 
+.info-card a {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.info-card a:hover {
+  color: var(--color-accent);
+}
+
 .info-card strong {
   display: block;
   font-size: 0.8rem;

@@ -186,20 +186,70 @@
 .operations-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.op-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--color-gray-100);
+  border-radius: 12px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.op-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.op-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 1rem;
+  background: rgba(244,121,32,0.1);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.op-card h3 { margin-bottom: 0.65rem; font-size: 1rem; }
+.op-card p { font-size: 0.85rem; color: var(--color-gray-500); line-height: 1.6; }
+
+.ops-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 2rem;
+  background: var(--color-primary);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
 }
 
-.op-card { text-align: center; padding: 2rem 1.5rem; position: relative; }
+.ops-stat {
+  text-align: center;
+}
 
-.op-number {
+.ops-stat-number {
+  display: block;
   font-family: var(--font-heading);
-  font-size: 3rem; font-weight: 900;
-  color: rgba(2, 19, 35, 0.08);
-  line-height: 1; margin-bottom: -0.5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1.2;
 }
 
-.op-card h3 { margin-bottom: 0.75rem; position: relative; z-index: 1; }
-.op-card p { font-size: 0.9rem; color: var(--color-gray-500); }
+.ops-stat-label {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.ops-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+}
 
 /* Competitive Advantage */
 .advantage-section {

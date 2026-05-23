@@ -184,19 +184,56 @@
   margin-bottom: 1.5rem;
 }
 
-.why-us-list {
-  list-style: none;
-  padding: 0;
+.why-us-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   margin-bottom: 2rem;
 }
 
-.why-us-list li {
+.why-card {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0;
-  font-weight: 500;
-  color: var(--color-gray-700);
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-gray-100);
+  border-radius: 12px;
+  border-left: 3px solid transparent;
+  transition: all 0.25s;
+}
+
+.why-card:hover {
+  border-left-color: var(--color-accent);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.why-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.why-card:hover .why-icon {
+  background: rgba(244,121,32,0.1);
+}
+
+.why-card strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  margin-bottom: 0.15rem;
+}
+
+.why-card span {
+  font-size: 0.82rem;
+  color: var(--color-gray-500);
 }
 
 .why-us-image .image-placeholder {

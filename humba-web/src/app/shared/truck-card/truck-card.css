@@ -15,19 +15,16 @@
 }
 
 .truck-visual {
-  background: var(--color-gray-100);
   overflow: hidden;
-  aspect-ratio: 16 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 240px;
 }
 
 .truck-img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .truck-info {
@@ -125,4 +122,25 @@
   height: 5px;
   background: var(--color-accent);
   border-radius: 50%;
+}
+
+.btn-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  padding: 0.65rem;
+  background: #25D366;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 0.75rem;
+  transition: background 0.2s;
+}
+
+.btn-book:hover {
+  background: #1ebe57;
 }

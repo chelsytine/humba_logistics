@@ -10,45 +10,20 @@
     <div class="section-header">
       <div class="accent-bar"></div>
       <h2>Vehicles That Move Africa</h2>
-      <p>Each vehicle in our fleet is maintained to the highest standards, branded with the Humba Logistics name, and ready to serve your logistics needs across Zimbabwe and beyond.</p>
+      <p>Each vehicle in our fleet is maintained to the highest standards and ready to serve your logistics needs across Zimbabwe and beyond.</p>
+    </div>
+
+    <div class="fleet-tabs">
+      <button class="fleet-tab" [class.active]="activeFilter() === 'all'" (click)="setFilter('all')">All</button>
+      <button class="fleet-tab" [class.active]="activeFilter() === 'transport'" (click)="setFilter('transport')">Transport</button>
+      <button class="fleet-tab" [class.active]="activeFilter() === 'construction'" (click)="setFilter('construction')">Construction</button>
+      <button class="fleet-tab" [class.active]="activeFilter() === 'passenger'" (click)="setFilter('passenger')">Passenger</button>
     </div>
 
     <div class="fleet-grid" appAppear>
       @for (truck of trucks(); track truck.id) {
         <app-truck-card [truck]="truck"></app-truck-card>
       }
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background: var(--color-gray-100);">
-  <div class="container">
-    <div class="section-header">
-      <div class="accent-bar"></div>
-      <h2>Fleet Growth Strategy</h2>
-      <p>Our roadmap for expanding our logistics capacity</p>
-    </div>
-    <div class="growth-grid">
-      <div class="growth-card phase-1">
-        <span class="phase-badge">Phase 1</span>
-        <h3>Current Operations</h3>
-        <p>2-3 vehicles serving Harare and surrounding areas with structured driver management and local supervision.</p>
-      </div>
-      <div class="growth-card phase-2">
-        <span class="phase-badge">Phase 2</span>
-        <h3>Expansion</h3>
-        <p>Growing to 5-8 vehicles, securing long-term contracts with construction firms and SMEs across Zimbabwe.</p>
-      </div>
-      <div class="growth-card phase-3">
-        <span class="phase-badge">Phase 3</span>
-        <h3>Regional Scale</h3>
-        <p>Bulk material transport, cross-border logistics into neighboring countries, and fleet diversification.</p>
-      </div>
-      <div class="growth-card phase-4">
-        <span class="phase-badge">Phase 4</span>
-        <h3>Africa Vision</h3>
-        <p>Building a logistics network across Africa integrated with construction and real estate operations.</p>
-      </div>
     </div>
   </div>
 </section>

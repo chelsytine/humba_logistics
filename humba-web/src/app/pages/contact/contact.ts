@@ -42,7 +42,7 @@ export class Contact {
     return this.contactForm.controls;
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     this.submitted = true;
 
     if (this.contactForm.invalid) {
@@ -51,16 +51,14 @@ export class Contact {
 
     this.submitting = true;
 
-    setTimeout(() => {
-      this.saveMessage();
-      this.submitting = false;
-      this.submitSuccess = true;
-      this.contactForm.reset();
-      this.submitted = false;
-    }, 800);
+    await this.saveMessage();
+    this.submitting = false;
+    this.submitSuccess = true;
+    this.contactForm.reset();
+    this.submitted = false;
   }
 
-  private saveMessage(): void {
+  private async saveMessage(): Promise<void> {
     const newMsg: ContactMessage = {
       id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36),
       name: this.f['name'].value.trim(),
@@ -75,7 +73,7 @@ export class Contact {
     const existing = Contact.getMessages();
     existing.unshift(newMsg);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
-    this.firebaseService.sendMessage(newMsg);
+    await this.firebaseService.sendMessage(newMsg);
   }
 
   static getMessages(): ContactMessage[] {
