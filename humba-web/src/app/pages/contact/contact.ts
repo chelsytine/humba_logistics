@@ -13,7 +13,6 @@ export interface ContactMessage {
   read: boolean;
 }
 
-const STORAGE_KEY = 'humba_messages';
 
 @Component({
   selector: 'app-contact',
@@ -70,33 +69,7 @@ export class Contact {
       read: false
     };
 
-    const existing = Contact.getMessages();
-    existing.unshift(newMsg);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
     await this.firebaseService.sendMessage(newMsg);
-  }
-
-  static getMessages(): ContactMessage[] {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch {
-      return [];
-    }
-  }
-
-  static markAsRead(id: string): void {
-    const msgs = Contact.getMessages();
-    const msg = msgs.find((m: ContactMessage) => m.id === id);
-    if (msg) {
-      msg.read = true;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
-    }
-  }
-
-  static deleteMessage(id: string): void {
-    const msgs = Contact.getMessages().filter((m: ContactMessage) => m.id !== id);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
   }
 
   resetForm(): void {

@@ -104,6 +104,10 @@ img {
   border-radius: 2px;
 }
 
+.accent-bar--left {
+  margin-left: 0;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

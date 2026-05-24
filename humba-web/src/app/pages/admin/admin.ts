@@ -2,7 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { FirebaseService, type FirestoreTruck } from '../../services/firebase.service';
-import { Contact, type ContactMessage } from '../contact/contact';
+import { type ContactMessage } from '../contact/contact';
 
 const DEFAULT_PASSWORD = 'humba2025';
 const PASSWORD_STORAGE_KEY = '_hba_ak';
@@ -142,28 +142,19 @@ export class Admin implements OnInit {
 
   // --- Messages ---
   private async loadMessages(): Promise<void> {
-    const local = Contact.getMessages();
     const remote = await this.fb.getAllMessages();
-    const merged = [...remote];
-    for (const lm of local) {
-      if (!merged.find((m: any) => m.id === lm.id)) {
-        merged.push(lm);
-      }
-    }
-    this.messages.set(merged.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+    this.messages.set(remote);
   }
 
   refreshMsgs(): void { this.loadMessages(); }
 
   async markRead(msg: ContactMessage): Promise<void> {
-    Contact.markAsRead(msg.id);
     await this.fb.markMsgRead(msg.id);
     await this.loadMessages();
   }
 
   async deleteMsg(msg: ContactMessage): Promise<void> {
     if (confirm(`Delete message from ${msg.name}?`)) {
-      Contact.deleteMessage(msg.id);
       await this.fb.deleteMessage(msg.id);
       if (this.selectedMsg()?.id === msg.id) this.selectedMsg.set(null);
       await this.loadMessages();

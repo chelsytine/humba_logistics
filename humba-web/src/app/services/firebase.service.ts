@@ -28,7 +28,8 @@ export class FirebaseService {
       const app = initializeApp(environment.firebase);
       this.db = getFirestore(app);
       this.initialized = true;
-    } catch {
+    } catch (e) {
+      console.error('Firebase init failed:', e);
       this.initialized = false;
     }
   }
@@ -63,7 +64,7 @@ export class FirebaseService {
     try {
       const { setDoc, doc } = await import('firebase/firestore');
       await setDoc(doc(this.db, 'trucks', id), truck);
-    } catch {}
+    } catch (e) { console.error('saveTruck failed:', e); }
   }
 
   async deleteTruck(id: string): Promise<void> {
@@ -71,7 +72,7 @@ export class FirebaseService {
     try {
       const { deleteDoc, doc } = await import('firebase/firestore');
       await deleteDoc(doc(this.db, 'trucks', id));
-    } catch {}
+    } catch (e) { console.error('deleteTruck failed:', e); }
   }
 
   async sendMessage(msg: any): Promise<void> {
@@ -80,7 +81,7 @@ export class FirebaseService {
     try {
       const { setDoc, doc } = await import('firebase/firestore');
       await setDoc(doc(this.db, 'messages', msg.id), msg);
-    } catch {}
+    } catch (e) { console.error('sendMessage failed:', e); }
   }
 
   async getAllMessages(): Promise<any[]> {
@@ -91,7 +92,8 @@ export class FirebaseService {
       const msgs: any[] = [];
       snapshot.forEach((doc: any) => msgs.push({ id: doc.id, ...doc.data() }));
       return msgs.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    } catch {
+    } catch (e) {
+      console.error('getAllMessages failed:', e);
       return [];
     }
   }
@@ -101,7 +103,7 @@ export class FirebaseService {
     try {
       const { updateDoc, doc } = await import('firebase/firestore');
       await updateDoc(doc(this.db, 'messages', id), { read: true });
-    } catch {}
+    } catch (e) { console.error('markMsgRead failed:', e); }
   }
 
   async deleteMessage(id: string): Promise<void> {
@@ -109,7 +111,7 @@ export class FirebaseService {
     try {
       const { deleteDoc, doc } = await import('firebase/firestore');
       await deleteDoc(doc(this.db, 'messages', id));
-    } catch {}
+    } catch (e) { console.error('deleteMessage failed:', e); }
   }
 
   private async seedDefaults(): Promise<void> {
@@ -119,7 +121,7 @@ export class FirebaseService {
         const id = t.name.toLowerCase().replace(/\s+/g, '-');
         await setDoc(doc(this.db, 'trucks', id), t);
       }
-    } catch {}
+    } catch (e) { console.error('seedDefaults failed:', e); }
   }
 
   private defaultTrucks(): FirestoreTruck[] {
